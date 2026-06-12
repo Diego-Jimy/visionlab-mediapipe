@@ -1,0 +1,170 @@
+/* ===== RESET Y BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0f0f13;
+  --surface: #1a1a24;
+  --surface-hover: #202032;
+  --border: #2a2a3a;
+  --accent: #6c63ff;
+  --accent2: #00d4aa;
+  --text: #e8e8f0;
+  --text-muted: #9a9aad;
+  --radius: 16px;
+  --font: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(108, 99, 255, 0.12), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  padding: 4rem 1rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  color: var(--text);
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.tagline {
+  margin-top: 0.6rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* ===== GALERÍA ===== */
+.gallery {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.7rem;
+}
+
+/* ===== TARJETA ===== */
+.card {
+  min-height: 250px;
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--surface), #171720);
+  color: var(--text);
+  text-decoration: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  background: var(--surface-hover);
+}
+
+.card-icon {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 0.4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+  background: rgba(108, 99, 255, 0.14);
+  color: var(--accent);
+  font-size: 2rem;
+}
+
+.card-icon i {
+  line-height: 1;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.card-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.card-tag {
+  width: fit-content;
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.75rem;
+
+  border-radius: 999px;
+  border: 1px solid rgba(108, 99, 255, 0.35);
+  background: rgba(108, 99, 255, 0.14);
+
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 0.82rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .header {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .logo {
+    font-size: 2.1rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1rem;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+}

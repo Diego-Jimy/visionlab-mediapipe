@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Carrusel Coverflow | VisionLab</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="../css/carrusel.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="../index.html" class="back-btn">
+      <i class="bi bi-arrow-left"></i>
+      Volver
+    </a>
+
+    <h1>Carrusel Coverflow</h1>
+    <span class="lib-badge">MediaPipe Pose</span>
+  </header>
+
+  <div class="status-bar">
+    <span id="status-text">Iniciando cámara...</span>
+  </div>
+
+  <main class="page-content">
+    <section class="carousel-wrapper">
+      <button class="nav-btn" type="button" id="btn-prev" aria-label="Imagen anterior">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+
+      <div class="carousel-viewport">
+        <div class="carousel" id="carousel">
+
+          <article class="card-item" data-idx="0">
+            <div class="card-inner">
+              <i class="bi bi-brightness-alt-high"></i>
+              <span>Amanecer</span>
+            </div>
+          </article>
+
+          <article class="card-item" data-idx="1">
+            <div class="card-inner">
+              <i class="bi bi-water"></i>
+              <span>Océano</span>
+            </div>
+          </article>
+
+          <article class="card-item central" data-idx="2">
+            <div class="card-inner">
+              <i class="bi bi-image"></i>
+              <span>Montaña</span>
+            </div>
+          </article>
+
+          <article class="card-item" data-idx="3">
+            <div class="card-inner">
+              <i class="bi bi-flower1"></i>
+              <span>Primavera</span>
+            </div>
+          </article>
+
+          <article class="card-item" data-idx="4">
+            <div class="card-inner">
+              <i class="bi bi-stars"></i>
+              <span>Cosmos</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <button class="nav-btn" type="button" id="btn-next" aria-label="Imagen siguiente">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </section>
+
+    <section class="camera-row">
+      <div class="camera-container">
+        <video id="video" playsinline muted></video>
+        <canvas id="canvas" width="320" height="240"></canvas>
+
+        <div id="cam-error" class="cam-error hidden">
+          Cámara no disponible.
+        </div>
+      </div>
+
+      <div class="hint-box">
+        <p><strong>Avanzar:</strong> extiende tu mano derecha hacia la izquierda.</p>
+        <p><strong>Retroceder:</strong> extiende tu mano izquierda hacia la derecha.</p>
+        <p><strong>Nota:</strong> también puedes probar con los botones laterales.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/carrusel.js"></script>
+</body>
+</html>

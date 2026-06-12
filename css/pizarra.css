@@ -1,0 +1,304 @@
+/* ===== RESET ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0f0f13;
+  --surface: #1a1a24;
+  --border: #2a2a3a;
+  --accent: #6c63ff;
+  --accent2: #00d4aa;
+  --danger: #ff6b6b;
+  --text: #e8e8f0;
+  --text-muted: #9a9aad;
+}
+
+body {
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+  min-height: 64px;
+  padding: 0.75rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.topbar h1 {
+  flex: 1;
+  font-size: 1.2rem;
+}
+
+.lib-badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(108, 99, 255, 0.35);
+  background: rgba(108, 99, 255, 0.16);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toolbar button,
+.toolbar select {
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #111118;
+  color: var(--text);
+  padding: 0 0.75rem;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.toolbar button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.toolbar button:hover,
+.toolbar select:hover {
+  border-color: var(--accent);
+}
+
+/* ===== STATUS ===== */
+.status-bar {
+  height: 46px;
+  padding: 0 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.mode-badge {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.mode-badge.draw {
+  color: var(--accent2);
+  border-color: var(--accent2);
+  background: rgba(0, 212, 170, 0.14);
+}
+
+.mode-badge.erase {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: rgba(255, 107, 107, 0.14);
+}
+
+.mode-badge.rest {
+  color: var(--text-muted);
+}
+
+/* ===== INSTRUCCIONES ===== */
+.instructions-panel {
+  padding: 0.7rem 1.5rem;
+  background: #15151f;
+  border-bottom: 1px solid var(--border);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.instruction-item {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(108, 99, 255, 0.1);
+  border: 1px solid rgba(108, 99, 255, 0.22);
+}
+
+.instruction-item strong {
+  color: var(--accent2);
+}
+
+/* ===== PIZARRA ===== */
+.board-container {
+  position: relative;
+  flex: 1;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    #101018;
+  background-size: 32px 32px;
+  overflow: hidden;
+}
+
+/* La cámara funciona, pero no se muestra */
+#video {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#canvas-draw,
+#canvas-hand {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#canvas-draw {
+  z-index: 2;
+}
+
+#canvas-hand {
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ===== TARJETA DE AYUDA ===== */
+.help-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 15;
+  transform: translate(-50%, -50%);
+
+  width: min(420px, calc(100% - 2rem));
+  padding: 1.5rem;
+  border-radius: 18px;
+  border: 1px solid rgba(108, 99, 255, 0.35);
+  background: rgba(26, 26, 36, 0.96);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.help-card h2 {
+  margin-bottom: 1rem;
+  color: var(--accent2);
+  font-size: 1.35rem;
+}
+
+.help-card p {
+  margin-bottom: 0.65rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.help-card strong {
+  color: var(--text);
+}
+
+.help-card button {
+  width: 100%;
+  height: 40px;
+  margin-top: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.help-card button:hover {
+  filter: brightness(1.1);
+}
+
+/* ===== ERROR ===== */
+.cam-error {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.88);
+  color: var(--danger);
+  text-align: center;
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+
+  .topbar {
+    height: auto;
+    padding: 0.8rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .toolbar {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .toolbar button,
+  .toolbar select {
+    flex: 1;
+  }
+
+  .status-bar {
+    height: auto;
+    min-height: 46px;
+    gap: 0.8rem;
+  }
+
+  .instructions-panel {
+    justify-content: flex-start;
+    padding: 0.7rem 1rem;
+  }
+
+  .board-container {
+    min-height: 70vh;
+  }
+}

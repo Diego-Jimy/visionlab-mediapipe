@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Pizarra Digital | VisionLab</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="../css/pizarra.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="../index.html" class="back-btn">
+      <i class="bi bi-arrow-left"></i>
+      Volver
+    </a>
+
+    <h1>Pizarra Digital</h1>
+    <span class="lib-badge">MediaPipe Hands</span>
+
+    <div class="toolbar">
+      <button id="btn-clear" title="Limpiar pizarra">
+        <i class="bi bi-trash3"></i>
+        Limpiar
+      </button>
+
+      <select id="color-picker" title="Color del pincel">
+        <option value="#00d4aa">Verde</option>
+        <option value="#6c63ff">Violeta</option>
+        <option value="#ff6b6b">Rojo</option>
+        <option value="#ffe066">Amarillo</option>
+        <option value="#ffffff">Blanco</option>
+      </select>
+
+      <select id="brush-size" title="Tamaño del pincel">
+        <option value="4">Fino</option>
+        <option value="8" selected>Medio</option>
+        <option value="14">Grueso</option>
+      </select>
+
+      <select id="brush-style" title="Tipo de pincel">
+        <option value="round" selected>Redondo</option>
+        <option value="laser">Láser</option>
+        <option value="marker">Marcador</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="status-bar">
+    <span id="status-text">Iniciando pizarra...</span>
+    <span id="mode-badge" class="mode-badge rest">REPOSO</span>
+  </div>
+
+  <section class="instructions-panel">
+    <div class="instruction-item">
+      <strong>Pulgar + medio:</strong> activar/desactivar pincel
+    </div>
+
+    <div class="instruction-item">
+      <strong>Índice:</strong> dibujar cuando el pincel está activo
+    </div>
+
+    <div class="instruction-item">
+      <strong>Índice + pulgar:</strong> borrador
+    </div>
+  </section>
+
+  <main class="board-container">
+    <video id="video" autoplay playsinline muted></video>
+
+    <canvas id="canvas-draw"></canvas>
+    <canvas id="canvas-hand"></canvas>
+
+    <div id="cam-error" class="cam-error hidden">
+      Cámara no disponible. Permite el acceso e intenta nuevamente.
+    </div>
+
+    <div id="help-card" class="help-card">
+      <h2>Pizarra Digital Interactiva</h2>
+      <p><strong>Pulgar + medio:</strong> activa o desactiva el pincel.</p>
+      <p><strong>Índice extendido:</strong> dibuja en la pizarra.</p>
+      <p><strong>Índice + pulgar:</strong> activa el borrador.</p>
+
+      <button id="btn-help-close">
+        Comenzar
+      </button>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675466862/camera_utils.js"></script>
+  <script src="../js/pizarra.js"></script>
+</body>
+</html>

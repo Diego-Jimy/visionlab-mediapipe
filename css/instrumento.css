@@ -1,0 +1,289 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0f0f13;
+  --surface: #1a1a24;
+  --border: #2a2a3a;
+  --accent: #6c63ff;
+  --accent2: #00d4aa;
+  --danger: #ff6b6b;
+  --text: #e8e8f0;
+  --text-muted: #9a9aad;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(108, 99, 255, 0.14), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.topbar h1 {
+  flex: 1;
+  font-size: 1.35rem;
+}
+
+.lib-badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(108, 99, 255, 0.35);
+  background: rgba(108, 99, 255, 0.16);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.status-bar {
+  height: 50px;
+  padding: 0 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-layout {
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - 112px);
+  max-width: none;
+  margin: 0;
+  padding: 1.5rem;
+
+  display: grid;
+  grid-template-columns: 1fr 90px;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.instrument-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(108, 99, 255, 0.1), transparent),
+    #111118;
+  overflow: hidden;
+}
+
+#video {
+  display: none;
+}
+
+#canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.keyboard {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.key {
+  position: relative;
+  min-width: 0;
+  border-radius: 24px;
+  border: 2px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent),
+    var(--surface);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 2.5rem 1rem;
+  overflow: hidden;
+  transition: 0.15s ease;
+}
+
+.key::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--col), transparent 60%);
+  opacity: 0.16;
+}
+
+.key span {
+  position: relative;
+  color: var(--col);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 900;
+}
+
+.key small {
+  position: relative;
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+}
+
+.key.active {
+  border-color: var(--col);
+  box-shadow: 0 0 45px color-mix(in srgb, var(--col) 55%, transparent);
+  transform: translateY(-10px);
+}
+
+.key.active::before {
+  opacity: 0.42;
+}
+
+.volume-panel {
+  height: 100%;
+  padding: 1.2rem 0.7rem;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.volume-icon {
+  color: var(--accent2);
+  font-size: 1.6rem;
+}
+
+.volume-track {
+  flex: 1;
+  width: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #111118;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.volume-fill {
+  width: 100%;
+  height: 50%;
+  border-radius: 999px;
+  background: linear-gradient(to top, var(--accent), var(--accent2));
+  transition: height 0.1s ease;
+}
+
+.volume-value {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.pinch-indicator {
+  display: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(0, 212, 170, 0.16);
+  color: var(--accent2);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pinch-indicator.active {
+  display: block;
+}
+
+.cam-error {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.85);
+  color: var(--danger);
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 800px) {
+  body {
+    overflow: auto;
+  }
+
+  .main-layout {
+    height: auto;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .instrument-stage {
+    height: 70vh;
+  }
+
+  .keyboard {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding: 1rem;
+  }
+
+  .key {
+    padding: 1rem;
+  }
+
+  .volume-panel {
+    height: 100px;
+    flex-direction: row;
+  }
+
+  .volume-track {
+    height: 32px;
+    width: 100%;
+  }
+}

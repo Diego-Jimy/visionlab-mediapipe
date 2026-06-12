@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>VisionLab | Laboratorio de Visión Artificial</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="logo">
+      <i class="bi bi-eye"></i>
+      Vision<span>Lab</span>
+    </h1>
+    <p class="tagline">Visión artificial e interacción gestual ejecutada en el navegador</p>
+  </header>
+
+  <main class="gallery">
+
+    <a class="card" href="pages/menu-gestual.html">
+      <div class="card-icon">
+        <i class="bi bi-hand-index-thumb"></i>
+      </div>
+      <h2 class="card-title">Menú Gestual</h2>
+      <p class="card-desc">Selecciona productos levantando la mano frente a la cámara.</p>
+      <span class="card-tag">PoseNet</span>
+    </a>
+
+    <a class="card" href="pages/carrusel.html">
+      <div class="card-icon">
+        <i class="bi bi-collection"></i>
+      </div>
+      <h2 class="card-title">Carrusel Coverflow</h2>
+      <p class="card-desc">Navega imágenes mediante movimientos espaciales de tus manos.</p>
+      <span class="card-tag">MoveNet</span>
+    </a>
+
+    <a class="card" href="pages/instrumento.html">
+      <div class="card-icon">
+        <i class="bi bi-music-note-beamed"></i>
+      </div>
+      <h2 class="card-title">Instrumento Virtual</h2>
+      <p class="card-desc">Toca notas musicales en el aire usando el movimiento de tus dedos.</p>
+      <span class="card-tag">MediaPipe + Tone.js</span>
+    </a>
+
+    <a class="card" href="pages/pizarra.html">
+      <div class="card-icon">
+        <i class="bi bi-vector-pen"></i>
+      </div>
+      <h2 class="card-title">Pizarra Digital</h2>
+      <p class="card-desc">Dibuja en pantalla usando tu dedo índice como pincel virtual.</p>
+      <span class="card-tag">MediaPipe Hands</span>
+    </a>
+
+    <a class="card" href="pages/probador-ar.html">
+      <div class="card-icon">
+        <i class="bi bi-badge-ar"></i>
+      </div>
+      <h2 class="card-title">Probador Virtual</h2>
+      <p class="card-desc">Prueba gafas virtuales adaptadas a tu rostro en tiempo real.</p>
+      <span class="card-tag">Face Mesh</span>
+    </a>
+
+    <a class="card" href="pages/videojuego.html">
+      <div class="card-icon">
+        <i class="bi bi-joystick"></i>
+      </div>
+      <h2 class="card-title">Cazador de Burbujas</h2>
+      <p class="card-desc">Revienta burbujas con tus manos sin tocar la pantalla.</p>
+      <span class="card-tag">MediaPipe Hands</span>
+    </a>
+
+  </main>
+
+  <footer class="footer">
+    <p>VisionLab &mdash; Todo ejecutado en el navegador</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Instrumento Virtual | VisionLab</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="../css/instrumento.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="../index.html" class="back-btn">
+      <i class="bi bi-arrow-left"></i>
+      Volver
+    </a>
+
+    <h1>Instrumento Virtual</h1>
+    <span class="lib-badge">MediaPipe + Tone.js</span>
+  </header>
+
+  <div class="status-bar">
+    <span id="status-text">Iniciando instrumento...</span>
+  </div>
+
+  <main class="main-layout">
+
+    <section class="instrument-stage">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="canvas"></canvas>
+
+      <div class="keyboard" id="keyboard">
+        <div class="key" data-note="C4" style="--col:#ff4d8d">
+          <span>Do</span>
+          <small>C</small>
+        </div>
+
+        <div class="key" data-note="D4" style="--col:#ffb020">
+          <span>Re</span>
+          <small>D</small>
+        </div>
+
+        <div class="key" data-note="E4" style="--col:#ffe066">
+          <span>Mi</span>
+          <small>E</small>
+        </div>
+
+        <div class="key" data-note="F4" style="--col:#00d4aa">
+          <span>Fa</span>
+          <small>F</small>
+        </div>
+
+        <div class="key" data-note="G4" style="--col:#6c63ff">
+          <span>Sol</span>
+          <small>G</small>
+        </div>
+      </div>
+
+      <div id="cam-error" class="cam-error hidden">
+        Cámara no disponible. Permite el acceso e intenta nuevamente.
+      </div>
+    </section>
+
+    <aside class="volume-panel">
+      <div class="volume-icon">
+        <i class="bi bi-volume-up"></i>
+      </div>
+
+      <div class="volume-track">
+        <div class="volume-fill" id="volume-fill"></div>
+      </div>
+
+      <div class="volume-value" id="volume-value">50%</div>
+
+      <div class="pinch-indicator" id="pinch-indicator">
+        Pinza activa
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675466862/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.js"></script>
+  <script src="../js/instrumento.js"></script>
+</body>
+</html>
